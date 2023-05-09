@@ -1,0 +1,73 @@
+from ._builtin import Page, WaitPage
+from otree.api import Currency as c, currency_range
+from .models import Constants
+
+
+class Introduction(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+    
+    """Description of the game: How to play and returns expected"""
+
+    pass
+
+
+class Contribute(Page):
+    """Player: Choose how much to contribute"""
+    
+
+    def vars_for_template(self):
+        if self.player.round_number ==1:
+            return dict(a=5)
+        else:
+            return dict(a = self.player.in_round(self.player.round_number-1).payoff)
+  
+    form_model = 'player'
+    form_fields = ['contribution']
+    
+    timeout_seconds = 20
+
+class ResultsWaitPage(WaitPage):
+    after_all_players_arrive = 'set_payoffs'
+
+    body_text = "Waiting for other participants to contribute."
+
+
+class Results(Page):
+    """Players payoff: How much each has earned"""
+    
+    timeout_seconds = 20
+
+    def vars_for_template(self):
+        return dict(total_earnings=self.group.total_contribution * Constants.multiplier)
+    
+    
+class Loss(Page):
+    def is_displayed(self):
+        return self.round_number == 5
+    
+class Introduction2(Page):
+    def is_displayed(self):
+      return self.round_number ==5
+    
+    def vars_for_template(self):
+      num = int(self.group.id)
+      if num % 2 == 0:
+        return dict(bunki = "次に先のゲームのグループを一度解散させ、新しく4人でグループを作りなおします。")
+      else:
+        return dict(bunki = "次に同じ4人でグループで次のゲームを行います。")
+      
+
+class Dictator(Page):
+    def is_displayed(self):
+      return self.round_number ==5
+    
+    form_model = 'player'
+    form_fields = ['giveA','giveB','giveC']
+
+    
+   
+
+
+
+page_sequence = [Introduction, Contribute, ResultsWaitPage, Results,Loss,Introduction2,Dictator]

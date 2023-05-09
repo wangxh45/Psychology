@@ -1,0 +1,12 @@
+{{ block title }}游戏结果{{ endblock }}
+{{ block content }}
+
+    <p>
+        你开始有20个代币，你贡献了 {{ player.contribution }}，你们小组贡献的总金额是{{ group.total_contribution }}，
+        每个人分到了{{ group.individual_share }}，你收到的惩罚是{{ player.punishment_received }}，
+        你花费了{{ player.cost_of_punishing }} 个代币惩罚其他人，所以这一轮游戏后你的代币是{{ player.payoff }}。
+    </p>
+
+    {{ next_button }}
+
+{{ endblock }}

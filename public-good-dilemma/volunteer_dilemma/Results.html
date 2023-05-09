@@ -1,0 +1,20 @@
+{{ block title }}游戏结果{{ endblock }}
+{{ block content }}
+    <p>
+        {{ if player.volunteer }}
+            你成为了志愿者，因此你的回报是：
+            <strong>{{ player.payoff }}</strong>.
+        {{ elif group.num_volunteers > 0 }}
+            你没有成为志愿者，但是其他人成为了，因此你的回报是：
+            <strong>{{ player.payoff }}</strong>.
+        {{ else }}
+            你没有成为志愿者，其他人也没有，因此你的回报是：
+            <strong>{{ player.payoff }}</strong>.
+        {{ endif }}
+    </p>
+
+    <p>{{ next_button }}</p>
+
+    {{ include C.INSTRUCTIONS_TEMPLATE }}
+
+{{ endblock }}

@@ -1,0 +1,13 @@
+{{ block title }}结果{{ endblock }}
+{{ block content }}
+    <p>
+
+        {{ if player.id_in_group == 1 }}
+            你决定为自己留下<strong>{{ group.kept }}</strong>
+        {{ else }}
+            另一名玩家分配者决定为自己留下 <strong>{{ group.kept }}</strong>,所以你将得到<strong>{{ offer }}</strong>.
+        {{ endif }}
+        {{ next_button }}
+    </p>
+    {{ include C.INSTRUCTIONS_TEMPLATE }}
+{{ endblock }}

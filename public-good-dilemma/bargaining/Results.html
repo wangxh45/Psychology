@@ -1,0 +1,26 @@
+{{ block title }}结果{{ endblock }}
+{{ block content }}
+    <table class=table style="width: auto">
+        <tr>
+            <th>你的要求</th>
+            <td>{{ player.request }}</td>
+        </tr>
+        <tr>
+            <th>另一名玩家的要求</th>
+            <td>{{ other_player_request }}</td>
+        </tr>
+        <tr>
+            <th>你们要求的总额是</th>
+            <td>{{ group.total_requests }}</td>
+        </tr>
+        <tr>
+            <th>因此你的收益是</th>
+            <td>{{ player.payoff }}</td>
+        </tr>
+    </table>
+
+    <p>{{ next_button }}</p>
+
+    {{ include C.INSTRUCTIONS_TEMPLATE }}
+
+{{ endblock }}

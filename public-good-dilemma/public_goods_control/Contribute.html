@@ -1,0 +1,18 @@
+{{ block title }}第{{ player.round_number }}回合{{ endblock }}
+{{ block content }}
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{#<img src="{{ static image_path}}" width="100%"/>#}
+{#<hr/>#}
+<p>
+    每个成员可以把 0 至 100之间的任意金额存入公共账户，当公共账户里的金额大于200会翻倍，并平分返还给小组里的每个成员。
+</p>
+{#<hr/>#}
+
+{{ formfields }}
+{{ next_button }}
+{#<hr/>#}
+
+{{ endblock }}

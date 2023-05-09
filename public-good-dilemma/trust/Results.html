@@ -1,0 +1,35 @@
+{{ block title }}游戏结果{{ endblock }}
+{{ block content }}
+
+    {{ if player.id_in_group == 1 }}
+        <p>
+            你选择给玩家B{{ group.sent_amount }}.
+            玩家B返回给你{{ group.sent_back_amount }}.
+        </p>
+        <p>
+            你最初有{{ C.ENDOWMENT }},
+            选择给玩家N+B{{ group.sent_amount }},
+            收到了{{ group.sent_back_amount }}的返回
+            因此现在你有:
+            {{ C.ENDOWMENT }}-{{ group.sent_amount }}+{{ group.sent_back_amount }}=<strong>{{ player.payoff }}</strong>
+        </p>
+    {{ else }}
+        <p>
+            玩家A给你发送了 {{ group.sent_amount }}.
+            翻了三倍，所以你收到了 {{ tripled_amount }}.
+            你选择返回{{ group.sent_back_amount }}.
+        </p>
+        <p>
+            你收到了{{ tripled_amount }},
+            选择返回{{ group.sent_back_amount }}
+            因此现在你有:
+            ({{ tripled_amount }})-({{ group.sent_back_amount }})=<strong>{{ player.payoff }}</strong>
+        </p>
+        .
+    {{ endif }}
+
+    <p>{{ next_button }}</p>
+
+    {{ include C.INSTRUCTIONS_TEMPLATE }}
+
+{{ endblock }}

@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+
+
+{% block title %}
+    ゲーム1 ({{player.round_number}}回目）
+{% endblock %}
+
+{% block content %}
+あなたは0から
+{%if player.round_number == 1 %}
+{{5}}
+{%else%}
+{{a}}
+{%endif%}
+の範囲で投資できます。
+    {% formfields %}
+
+    {% next_button %}
+
+    {% include Constants.instructions_template %}
+
+{% endblock %}

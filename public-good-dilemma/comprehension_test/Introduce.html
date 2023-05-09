@@ -1,0 +1,18 @@
+{{ block title }}游戏介绍{{ endblock }}
+{{ block content }}
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<p>
+         每轮游戏开始后，你所在房间的每位成员都会得到100个游戏币， 每个房间都将开设一个公共账户，你们可以选择将任意数量的游戏币放入公共账户汇总，剩下的游戏币归自己所有，<span style="color:#cc4125">投放结束后，如果公共账户中的游戏币数量≥200，则公共账户中的游戏币数量将会翻倍，然后平分给你们4个人。</span>
+         <span style="color:#cc4125">如果公共账户中的游戏币数量＜200，你们投放到公共账户中的游戏币将不会退还。</span>
+</p>
+<p>
+          <span style="color:#cc4125"></span>你们在本轮游戏中得到的游戏币总数会自动储存到你的个人账户中。本次游戏共有12轮。
+</p>
+<img src="{{ static '新流程图.png'}}" width="100%"/>
+
+
+
+    {{ formfields }}
+    {{ next_button }}
+{{ endblock }}

@@ -1,0 +1,35 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    本轮结果
+{% endblock %}
+
+{% block content %}
+
+
+    <table class="table-condensed" style="width:500px; margin-top:20px;">
+        <tr><td>你放入公共账户的游戏币:</td><td>{{ player.contribution }}</td></tr>
+        <tr><td>其他小组成员放入公共账户的游戏币:</td><td></td></tr>
+        {% for p in player.get_others_in_group %}
+            <tr><td></td><td>{{ p.contribution }}</td></tr>
+        {% endfor %}
+
+        <tr><td>本轮公共账户中的游戏币总数:</td><td>{{ group.total_contribution }}</td></tr>
+
+        <tr><td colspan="2"><hr/></td></tr>
+
+        <tr><td>本轮你的收益:</td><td>{{ player.payoff }}</td></tr>
+
+        <tr><td>个人账户中的游戏币总数:</td><td>{{ participant.payoff }} </td></tr>
+
+    </table>
+    <p></p>
+
+    {% next_button %}
+
+
+    {% include Constants.instructions_template %}
+
+
+{% endblock %}

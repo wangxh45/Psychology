@@ -1,0 +1,39 @@
+{{ block title }}惩罚{{ endblock }}
+{{ block content }}
+
+    <p>
+        你为公共账户贡献了：{{ player.contribution }}.
+        下面是其他玩家的贡献:
+    </p>
+    <table class="table">
+        {{ for p in other_players }}
+            <tr>
+                <td>Player {{ p.id_in_group }}</td>
+                <td>{{ p.contribution }}</td>
+            </tr>
+        {{ endfor }}
+    </table>
+
+    <p>
+        你可以使用自己的代币惩罚其他玩家，每花1个代币惩罚，对方将减少3个代币的收益（同时你会减少1个代币）
+        (下面填3的倍数)
+    </p>
+
+    {{ formfields }}
+
+    <table class="table table-striped">
+        <tr>
+            <th>惩罚对方的代币数</th>
+            <th>你将花费的代币数</th>
+        </tr>
+        {{ for entry in schedule }}
+        <tr>
+            <td>{{ entry.0 }}</td>
+            <td>{{ entry.1|cu }}</td>
+        </tr>
+        {{ endfor }}
+    </table>
+
+    {{ next_button }}
+
+{{ endblock }}

@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    ゲーム2(2)
+{% endblock %}
+
+{% block content %}
+
+{%  if player.id_in_group == 1 or player.id_in_group == 2 %}
+<p>あなたのグループには損失を被った人が一人、損失を被っていない人が二人います。 </p>
+<p><strong>プレイヤーAが損失を受けた人です。プレイヤーB、プレイヤーCは損失を受けていない人です。</strong></p>
+{%  else %}
+<p>あなたのグループには損失を被った人が二人、損失を被っていない人が一人います。</p>
+<p><strong>プレイヤーA、プレイヤーBが損失を受けた人です。プレイヤーCは損失を受けていない人です。</strong></p>
+{%  endif %}
+<p>先のゲームでの自分の利得の内いくらを他のプレイヤーに与えるかを入力してください。</p>
+<p>あなたの先のゲームでの獲得利得{{player.last_payoff}}</p>
+<p><strong>三人に対する剰余額の合計が、{{player.last_payoff}}を越えないようにしてください。</strong></p>
+
+
+{% formfields%}
+
+    {% next_button %}
+
+{% endblock %}

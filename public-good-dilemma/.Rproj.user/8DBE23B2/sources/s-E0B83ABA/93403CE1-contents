@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+
+{% block title %}
+    最終結果
+{% endblock %}
+
+{% block content %}
+
+{%if player.id_in_group == 1 or player.id_in_group == 2%}
+    <p><strong>あなたの獲得ポイントは損失を受けました。</strong></p>
+    <p>あなたの獲得ポイントは{{player.payoff}}から、{{player.last_payoff}}になりました。</p>
+{%else%}  
+    <p><strong>あなたの獲得ポイントは損失を受けませんでした。</strong></p>
+    <p>あなたの最終獲得ポイントは{{player.payoff}}です。</p>
+{%endif%}    
+
+   {% next_button %}
+{% endblock %}

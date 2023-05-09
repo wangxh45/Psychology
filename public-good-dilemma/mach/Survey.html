@@ -1,0 +1,64 @@
+{{ block title }}
+最后几个问题
+{{ endblock }}
+
+{{ block content }}
+
+<p>
+    请仔细阅读一下声明，并考虑该声明是否适用于自己。您可以用7点计分来评估这些问题。请打勾：
+    <br>
+    <br>
+    <b>完全不同意</b>, 完全不同意该观点。
+    <br>
+    <b>部分不同意</b>, 部分不同意该观点。
+    <br>
+    <b>略不同意</b>, 略不同意该观点。
+    <br>
+    <b>不确定</b>, 不确定自己的观点。
+    <br>
+    <b>部分同意</b>, 部分同意该观点。
+    <br>
+    <b>略同意</b>, 略同意该观点。
+    <br>
+    <b>完全同意</b>, 完全同意自己的观点。
+    <br>
+    <br>
+     此问卷没有正确或错误答案。 最好根据自己的实际情况作答，以达到调查的目的。
+    <br>
+    <br>
+    请仔细阅读每个陈述，并勾选最能表达您观点的类别。 请快速但仔细地评估这些陈述。 <b> 不要遗漏声明。 </b>
+    即使您觉得难以做出决定，也请务必勾选一个答案，这是最适合您的答案。请立即开始回答。
+</p>
+
+
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th> 完全不同意 </th>
+        <th> 部分不同意 </th>
+        <th> 略不同意 </th>
+        <th> 中立 </th>
+        <th> 略同意 </th>
+        <th> 部分同意 </th>
+        <th> 完全同意 </th>
+    </tr>
+    {{ for field in form }}
+    <tr>
+        <th>{{ field.label }}</th>
+        {{ for option in field }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+    {{ endfor }}
+</table>
+
+{{ next_button }}
+
+<script>
+    // workaround needed until wtforms #615 is published
+    for (let option of document.querySelectorAll('input[type=radio]')) {
+        option.required = 'required';
+    }
+</script>
+
+{{ endblock }}

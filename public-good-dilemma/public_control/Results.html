@@ -1,0 +1,34 @@
+{{ block title }}游戏结果{{ endblock }}
+{{ block content }}
+
+{{ if group.total_contribution < 200 }}
+    <p>
+       你开始有100元，你贡献了 {{ player.contribution }}，你们小组贡献的总金额是{{ group.total_contribution }}，由于公共账户金额不足200
+        每个人分到了{{ group.individual_share }}，所以这一轮游戏后你有{{ player.payoff }}。
+    </p>
+    <HR  width="80%" color=#987cb9 SIZE=1>
+    <p>
+       你的个人账户总金额是{{ participant.payoff }}。
+    </p>
+{{ else }}
+    <p>
+        你开始有100元，你贡献了 {{ player.contribution }}，你们小组贡献的总金额是{{ group.total_contribution }}，
+        每个人分到了{{ group.individual_share }}，所以这一轮游戏后你有{{ player.payoff }}。
+    </p>
+    <HR width="80%" color=#987cb9 SIZE=1>
+    <p>
+        你的个人账户总金额是{{ participant.payoff }}。
+    </p>
+{{ endif }}
+
+
+
+
+
+
+
+
+
+{{ next_button }}
+
+{{ endblock }}

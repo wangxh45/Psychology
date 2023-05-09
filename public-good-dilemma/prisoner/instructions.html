@@ -1,0 +1,37 @@
+<div class="card bg-light m-3">
+    <div class="card-body">
+
+    <h3>
+        游戏介绍
+    </h3>
+
+    <p>
+        在这项研究中，您将与另一名参与者随机匿名配对。你们每个人同时私下选择是要合作还是背叛。 您的收益将由以下两者的选择决定：
+    </p>
+    <p><i>在每个单元格中，左侧的金额是您的收益，右侧的金额是其他参与者的收益。</i></p>
+
+    <table class='table table-bordered text-center'
+           style='width: auto; margin: auto'>
+        <tr>
+            <th colspan=2 rowspan=2></th>
+            <th colspan=2>对方的选择</th>
+        </tr>
+        <tr>
+            <th>合作</th>
+            <th>背叛</th>
+        </tr>
+        <tr>
+            <th rowspan=2><span style="transform: rotate(-90deg);">你的选择</span></th>
+            <th>合作</th>
+            <td>{{ C.PAYOFF_B }}, {{ C.PAYOFF_B }}</td>
+            <td>0, {{ C.PAYOFF_A }}</td>
+        </tr>
+        <tr>
+            <th>背叛</th>
+            <td>{{ C.PAYOFF_A }}, 0</td>
+            <td>{{ C.PAYOFF_C }}, {{ C.PAYOFF_C }}</td>
+        </tr>
+    </table>
+
+</div>
+</div>

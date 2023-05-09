@@ -1,0 +1,84 @@
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<figure class="highcharts-figure">
+    <div id="container">
+    </div>
+    <p class="highcharts-description">
+        Chart showing players contributions: frequency (histogram) and amount (scatter plot).
+    </p>
+</figure>
+ <script>
+
+
+
+var all_contributions_list = {{ all_contributions|json }};
+// var all_payoffs_list = {{ all_payoffs|json }};
+// all_contributions_list = all_contributions_list.flat()
+// all_payoffs_list = all_payoffs_list.flat()
+
+// var accepted_offers_list =  [55, 45, 55, 45, 50, 50, 48, 47, 50, 50, 50, 45, 46, 47, 48, 49, 43, 50, 50, 45, 45, 43, 29, 30, 25, 15, 30, 49, 31, 22, 35, 45, 44, 34, 47, 45, 40, 35];
+// var rejected_offers_list =  [15, 15, 15, 15, 15, 30, 45, 20, 10, 40, 40, 35, 25, 30, 45, 20, 10, 40, 40, 35, 25, 33, 22, 10, 5, 15, 0, 0, 1, 2, 5, 5, 4, 4, 7, 15, 20, 15];
+
+
+// let data = offers_list
+// console.log(data)
+//  console.log(typeof(js_vars.taken))
+//
+// let data = [15, 15, 15, 15, 15, 30, 45, 20, 10, 50, 50, 35, 25, 30, 45, 20, 10, 50, 50, 35, 25, 33, 22, 10, 5, 15, 0, 0, 1, 2, 5, 5, 4, 4, 7, 15, 20, 15];
+
+Highcharts.chart('container', {
+    title: {
+        text: 'Highcharts Histogram'
+    },
+
+    xAxis: [{
+        title: { text: 'Number of contribution' },
+        alignTicks: false
+    }, {
+        title: { text: 'Contribution amount' },
+        alignTicks: false,
+        opposite: true
+    }],
+
+    yAxis: [{
+        title: { text: 'Contribution amount' }
+    }, {
+        title: { text: 'Histogram' },
+        opposite: true
+    }],
+
+    plotOptions: {
+        histogram: {
+            accessibility: {
+                point: {
+                    valueDescriptionFormat: '{index}. {point.x:.3f} to {point.x2:.3f}, {point.y}.'
+                }
+            }
+        }
+    },
+
+    series: [{
+        name: 'Contributions histogram',
+        type: 'histogram',
+        xAxis: 1,
+        yAxis: 1,
+        baseSeries: 's1',
+        zIndex: -1
+    }, {
+        name: 'Contributions',
+        type: 'scatter',
+        data: all_contributions_list,
+        id: 's1',
+        marker: {
+            radius: 1.5
+        }
+    }
+    ]
+});
+</script>
+

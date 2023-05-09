@@ -1,0 +1,22 @@
+{{ block title }}
+    Round {{ subsession.round_number }}
+{{ endblock }}
+{{ block content }}
+
+    <p><i>
+        This game uses group_by_arrival_time for multiple rounds.
+        In each round, we ensure that you are matched with a different player.
+    </i></p>
+
+{#    <p>#}
+{#    Your partner is player {{ partner.id_in_subsession }}.#}
+{#    </p>#}
+{##}
+{#    <p>Here are the pairs that have already played together: {{ session.past_groups }}</p>#}
+{#<p>#}
+{#    每个成员可以把 0 至 100之间的任意金额存入公共账户，当公共账户里的金额大于200会翻倍，并平分返还给小组里的每个成员。#}
+{#</p>#}
+
+    {{ next_button }}
+
+{{ endblock }}

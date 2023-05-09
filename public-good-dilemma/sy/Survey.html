@@ -1,0 +1,42 @@
+{{ block title }}
+{{ endblock }}
+
+{{ block content }}
+
+<p>
+   看了李华所面临的处境。 你的感受是什么？ 你在多大程度上对李华有以下感受？
+  <strong>（1=没有感受， 7=非常强烈）</strong>
+</p>
+
+
+<table class="table table-striped">
+    <tr>
+        <th></th>
+        <th> 1 </th>
+        <th> 2 </th>
+        <th> 3 </th>
+        <th> 4 </th>
+        <th> 5 </th>
+        <th> 6 </th>
+        <th> 7 </th>
+    </tr>
+    {{ for field in form }}
+    <tr>
+        <th>{{ field.label }}</th>
+        {{ for option in field }}
+        <td>{{ option }}</td>
+        {{ endfor }}
+    </tr>
+    {{ endfor }}
+</table>
+
+{{ next_button }}
+
+<script>
+    // workaround needed until wtforms #615 is published
+    for (let option of document.querySelectorAll('input[type=radio]')) {
+        option.required = 'required';
+    }
+</script>
+
+{{ endblock }}

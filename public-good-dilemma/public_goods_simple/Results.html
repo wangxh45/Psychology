@@ -1,0 +1,11 @@
+{{ block title }}Results{{ endblock }}
+{{ block content }}
+
+    <p>
+        你开始有20元，你贡献了 {{ player.contribution }}，你们小组贡献的总金额是{{ group.total_contribution }}，
+        每个人分到了{{ group.individual_share }}，所以这一轮游戏后你有{{ player.payoff }}。
+    </p>
+
+    {{ next_button }}
+
+{{ endblock }}

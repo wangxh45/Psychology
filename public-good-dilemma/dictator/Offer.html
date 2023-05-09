@@ -1,0 +1,15 @@
+{{ block title }}你的决定{{ endblock }}
+{{ block content }}
+    <p>
+        你是 <strong>分配者</strong>.
+        请决定你的分配方案，可以选择为自己留下{{ C.ENDOWMENT }}中的任意金额
+        你将为自己留下多少
+    </p>
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+    {{ include C.INSTRUCTIONS_TEMPLATE }}
+
+{{ endblock }}
